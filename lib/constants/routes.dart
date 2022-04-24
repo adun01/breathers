@@ -1,4 +1,4 @@
-import 'package:breather/pixelPerfect.dart';
+import 'package:breather/widgets/layout/pixelPerfect.dart';
 import 'package:flutter/material.dart';
 
 import 'package:breather/pages/breathe-edit-page.dart';
@@ -17,7 +17,8 @@ class RoutesPath {
 
 final ROUTES = {
   routePathMain: (context) => MainPage(),
-  routePathBreather: (context) => PixelPerfectScreen(BreathePage()),
+  // routePathBreather: (context) => PixelPerfectScreen(BreathePage()),
+  routePathBreather: (context) => BreathePage(),
   routePathBreatherEdit: (context) => BreatheEditPage(),
 };
 
