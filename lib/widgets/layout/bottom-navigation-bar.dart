@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:breather/constants/colors.dart';
 import 'package:breather/constants/icons.dart';
-import 'package:breather/constants/routes.dart';
+import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/icon.dart';
 import 'package:flutter/material.dart';
 
@@ -28,19 +29,15 @@ class BreBottomNavigationBar extends StatefulWidget {
 class NavigationItem {
   String icon;
   String label;
-  NavigationItem({required this.icon, required this.label});
-
-  void onPressed(BuildContext context) {
-    if (label == 'Home') {
-      navigatorPushNames(context, RoutesPath.routeMain, null);
-    }
-  }
+  PageRouteInfo? route;
+  NavigationItem({required this.icon, required this.label, this.route});
 }
 
 class _BreBottomNavigationBar extends State {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   List<NavigationItem> items = [
-    NavigationItem(icon: CustomIcons.home, label: 'Home'),
+    NavigationItem(
+        icon: CustomIcons.home, label: 'Home', route: ListPageRouter()),
     NavigationItem(icon: CustomIcons.profile, label: 'Profile'),
     NavigationItem(icon: CustomIcons.settings, label: 'Settings'),
   ];
@@ -64,8 +61,11 @@ class _BreBottomNavigationBar extends State {
                   return Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        setSelectedIndex(item.key);
-                        item.value.onPressed(context);
+                        final route = item.value.route ?? null;
+                        if (route != null) {
+                          AutoRouter.of(context).navigate(route);
+                          setSelectedIndex(item.key);
+                        }
                       },
                       child: Container(
                         color: CustomColors.white.withOpacity(0.5),

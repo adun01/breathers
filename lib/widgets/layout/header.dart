@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:breather/constants/colors.dart';
 import 'package:breather/constants/icons.dart';
-import 'package:breather/constants/routes.dart';
+import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/circle-icon-button.dart';
 import 'package:breather/widgets/icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class BreHeader extends StatelessWidget {
   @override
@@ -21,7 +21,7 @@ class BreHeader extends StatelessWidget {
               children: [
                 BreCircleIconButton(
                   onPressed: () {
-                    navigatorPushNames(context, RoutesPath.routeMain, null);
+                    AutoRouter.of(context).navigate(ListPageRouter());
                   },
                   icon: BreIcon(path: CustomIcons.arrowBack),
                 ),
