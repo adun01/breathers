@@ -19,7 +19,7 @@ class BreathePracticPage extends StatelessWidget {
           BreatheHeader(),
           Expanded(
               child: ListView(
-            children: [BreathePractic()],
+            children: [BreathePractic(UniqueKey())],
           ))
         ],
       ),

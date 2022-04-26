@@ -85,6 +85,9 @@ const titleStyles = const TextStyle(
     fontWeight: FontWeight.w700);
 
 class BreathePractic extends StatefulWidget {
+
+  BreathePractic(Key? key): super(key: key);
+
   @override
   _BreathePracticState createState() => _BreathePracticState();
 }
