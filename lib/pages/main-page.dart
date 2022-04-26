@@ -3,13 +3,13 @@ import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/layout/bottom-navigation-bar.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatelessWidget {
+class BreatheMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
       routes: [ListPageRouter(), BrPageRouter()],
       bottomNavigationBuilder: (_, index) {
-        return BreBottomNavigationBar();
+        return BreatheBottomNavigationBar();
       },
     );
   }

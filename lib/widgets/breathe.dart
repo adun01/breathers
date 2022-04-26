@@ -5,11 +5,11 @@ import 'package:breather/widgets/label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BreatheStep {
+class BreathePracticStep {
   int time;
   BreatheTypeDto type;
 
-  BreatheStep(this.time, this.type);
+  BreathePracticStep(this.time, this.type);
 
   int get duration {
     return time * 1000;
@@ -59,13 +59,13 @@ class BreatheStep {
   }
 }
 
-class BreathePractic {
-  BreatheStep pauseStep = BreatheStep(0, BreatheTypeDto.hold);
-  final List<BreatheStep> steps = [
-    BreatheStep(7, BreatheTypeDto.inhale),
-    BreatheStep(3, BreatheTypeDto.hold),
-    BreatheStep(7, BreatheTypeDto.exhale),
-    BreatheStep(3, BreatheTypeDto.hold),
+class BreathePracticList {
+  BreathePracticStep pauseStep = BreathePracticStep(0, BreatheTypeDto.hold);
+  final List<BreathePracticStep> steps = [
+    BreathePracticStep(7, BreatheTypeDto.inhale),
+    BreathePracticStep(3, BreatheTypeDto.hold),
+    BreathePracticStep(7, BreatheTypeDto.exhale),
+    BreathePracticStep(3, BreatheTypeDto.hold),
   ];
 
   int get totalDuration {
@@ -84,19 +84,19 @@ const titleStyles = const TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700);
 
-class Breathe extends StatefulWidget {
+class BreathePractic extends StatefulWidget {
   @override
-  _BreatheState createState() => _BreatheState();
+  _BreathePracticState createState() => _BreathePracticState();
 }
 
-class _BreatheState extends State {
-  final BreathePractic practic = BreathePractic();
+class _BreathePracticState extends State {
+  final BreathePracticList practic = BreathePracticList();
 
   var activeStepIndex = 0;
   var activeCircleIndex = 0;
   var play = false;
 
-  BreatheStep get activeStep {
+  BreathePracticStep get activeStep {
     return practic.steps[activeStepIndex];
   }
 
@@ -136,11 +136,11 @@ class _BreatheState extends State {
         .asMap()
         .entries
         .map((entry) {
-      BreatheStep step = entry.value;
+      BreathePracticStep step = entry.value;
       final double percent = step.duration / practic.totalDuration;
       final double startAngle = passedPercent * 360;
       passedPercent += percent;
-      return BreCirculatPercend(
+      return BreatheCirculatPercend(
         key: ValueKey('${entry.key} circle key ${activeCircleIndex}'),
         progressColor: step.color,
         animationDuration: step.duration,
@@ -178,7 +178,7 @@ class _BreatheState extends State {
         ),
         Padding(
             padding: const EdgeInsets.only(bottom: 40),
-            child: BreLabel(
+            child: BreatheLabel(
               label: label,
             )),
         Stack(

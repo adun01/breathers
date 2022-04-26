@@ -6,7 +6,7 @@ import 'package:breather/widgets/circle-icon-button.dart';
 import 'package:breather/widgets/icon.dart';
 import 'package:flutter/material.dart';
 
-class BreHeader extends StatelessWidget {
+class BreatheHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,11 +19,11 @@ class BreHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                BreCircleIconButton(
+                BreatheCircleIconButton(
                   onPressed: () {
                     AutoRouter.of(context).navigate(ListPageRouter());
                   },
-                  icon: BreIcon(path: CustomIcons.arrowBack),
+                  icon: BreatheIcon(path: CustomIcons.arrowBack),
                 ),
                 Container(
                   margin: EdgeInsets.only(right: 16),

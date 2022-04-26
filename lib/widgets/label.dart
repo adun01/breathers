@@ -1,12 +1,12 @@
 import 'package:breather/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class BreLabel extends StatelessWidget {
+class BreatheLabel extends StatelessWidget {
   String label;
   double? fontSize;
   EdgeInsets? padding;
 
-  BreLabel({Key? key, required this.label, this.fontSize, this.padding})
+  BreatheLabel({Key? key, required this.label, this.fontSize, this.padding})
       : super(key: key);
 
   @override

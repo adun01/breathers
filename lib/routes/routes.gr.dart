@@ -13,9 +13,9 @@
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i5;
 
-import '../pages/breathe-page.dart' as _i4;
 import '../pages/list-page.dart' as _i3;
 import '../pages/main-page.dart' as _i1;
+import '../pages/practic-page.dart' as _i4;
 
 class AppRouter extends _i2.RootStackRouter {
   AppRouter([_i5.GlobalKey<_i5.NavigatorState>? navigatorKey])
@@ -25,7 +25,7 @@ class AppRouter extends _i2.RootStackRouter {
   final Map<String, _i2.PageFactory> pagesMap = {
     MainPageRouter.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i1.MainPage());
+          routeData: routeData, child: _i1.BreatheMainPage());
     },
     BrPageRouter.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
@@ -33,15 +33,16 @@ class AppRouter extends _i2.RootStackRouter {
     },
     ListPageRouter.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i3.ListPage());
+          routeData: routeData, child: _i3.BreatheListPage());
     },
-    BreathePageRouter.name: (routeData) {
+    BreathePracticPageRouter.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<BreathePageRouterArgs>(
-          orElse: () => BreathePageRouterArgs(id: pathParams.getInt('id')));
+      final args = routeData.argsAs<BreathePracticPageRouterArgs>(
+          orElse: () =>
+              BreathePracticPageRouterArgs(id: pathParams.getInt('id')));
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i4.BreathePage(key: args.key, id: args.id));
+          child: _i4.BreathePracticPage(key: args.key, id: args.id));
     }
   };
 
@@ -55,10 +56,11 @@ class AppRouter extends _i2.RootStackRouter {
                 _i2.RouteConfig('#redirect',
                     path: '',
                     parent: BrPageRouter.name,
-                    redirectTo: 'BreathePageRouter/:id',
+                    redirectTo: 'BreathePracticPageRouter/:id',
                     fullMatch: true),
-                _i2.RouteConfig(BreathePageRouter.name,
-                    path: 'BreathePageRouter/:id', parent: BrPageRouter.name)
+                _i2.RouteConfig(BreathePracticPageRouter.name,
+                    path: 'BreathePracticPageRouter/:id',
+                    parent: BrPageRouter.name)
               ]),
           _i2.RouteConfig(ListPageRouter.name,
               path: '', parent: MainPageRouter.name)
@@ -67,7 +69,7 @@ class AppRouter extends _i2.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.MainPage]
+/// [_i1.BreatheMainPage]
 class MainPageRouter extends _i2.PageRouteInfo<void> {
   const MainPageRouter({List<_i2.PageRouteInfo>? children})
       : super(MainPageRouter.name, path: '/', initialChildren: children);
@@ -86,7 +88,7 @@ class BrPageRouter extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.ListPage]
+/// [_i3.BreatheListPage]
 class ListPageRouter extends _i2.PageRouteInfo<void> {
   const ListPageRouter() : super(ListPageRouter.name, path: '');
 
@@ -94,19 +96,20 @@ class ListPageRouter extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.BreathePage]
-class BreathePageRouter extends _i2.PageRouteInfo<BreathePageRouterArgs> {
-  BreathePageRouter({_i5.Key? key, required int id})
-      : super(BreathePageRouter.name,
-            path: 'BreathePageRouter/:id',
-            args: BreathePageRouterArgs(key: key, id: id),
+/// [_i4.BreathePracticPage]
+class BreathePracticPageRouter
+    extends _i2.PageRouteInfo<BreathePracticPageRouterArgs> {
+  BreathePracticPageRouter({_i5.Key? key, required int id})
+      : super(BreathePracticPageRouter.name,
+            path: 'BreathePracticPageRouter/:id',
+            args: BreathePracticPageRouterArgs(key: key, id: id),
             rawPathParams: {'id': id});
 
-  static const String name = 'BreathePageRouter';
+  static const String name = 'BreathePracticPageRouter';
 }
 
-class BreathePageRouterArgs {
-  const BreathePageRouterArgs({this.key, required this.id});
+class BreathePracticPageRouterArgs {
+  const BreathePracticPageRouterArgs({this.key, required this.id});
 
   final _i5.Key? key;
 
@@ -114,6 +117,6 @@ class BreathePageRouterArgs {
 
   @override
   String toString() {
-    return 'BreathePageRouterArgs{key: $key, id: $id}';
+    return 'BreathePracticPageRouterArgs{key: $key, id: $id}';
   }
 }

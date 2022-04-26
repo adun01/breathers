@@ -19,10 +19,10 @@ TextStyle getTextStyle(bool isActive) {
   );
 }
 
-class BreBottomNavigationBar extends StatefulWidget {
+class BreatheBottomNavigationBar extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _BreBottomNavigationBar();
+    return _BreatheBottomNavigationBar();
   }
 }
 
@@ -33,8 +33,8 @@ class NavigationItem {
   NavigationItem({required this.icon, required this.label, this.route});
 }
 
-class _BreBottomNavigationBar extends State {
-  int selectedIndex = 1;
+class _BreatheBottomNavigationBar extends State {
+  int selectedIndex = 0;
   List<NavigationItem> items = [
     NavigationItem(
         icon: CustomIcons.home, label: 'Home', route: ListPageRouter()),
@@ -71,7 +71,7 @@ class _BreBottomNavigationBar extends State {
                         color: CustomColors.white.withOpacity(0.5),
                         child: Column(
                           children: [
-                            BreIcon(
+                            BreatheIcon(
                                 path: item.value.icon,
                                 color: getColor(selectedIndex == item.key)),
                             Text(item.value.label,

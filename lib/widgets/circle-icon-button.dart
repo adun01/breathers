@@ -1,13 +1,13 @@
 import 'package:breather/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class BreCircleIconButton extends StatelessWidget {
+class BreatheCircleIconButton extends StatelessWidget {
   final double? size;
   final Color? color;
   final VoidCallback? onPressed;
   final Widget icon;
 
-  BreCircleIconButton(
+  BreatheCircleIconButton(
       {Key? key,
       required this.onPressed,
       this.size = 56,

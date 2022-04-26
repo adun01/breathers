@@ -2,7 +2,7 @@ import 'package:breather/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class BreCirculatPercend extends StatelessWidget {
+class BreatheCirculatPercend extends StatelessWidget {
   int animationDuration;
   double percent;
   double startAngle;
@@ -10,7 +10,7 @@ class BreCirculatPercend extends StatelessWidget {
   Color? progressColor;
   VoidCallback? onAnimationEnd;
 
-  BreCirculatPercend(
+  BreatheCirculatPercend(
       {Key? key,
       required this.animationDuration,
       required this.percent,
