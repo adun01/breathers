@@ -13,50 +13,49 @@ class ListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.whiteLilac,
-      body: Column(
-        children: [
-          SafeArea(
-              child: Column(
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  BreIcon(path: CustomIcons.stars),
-                  Container(
-                    margin: const EdgeInsets.only(top: 80, bottom: 22),
-                    alignment: Alignment.center,
-                    child: BreIcon(path: CustomIcons.flower),
-                  )
-                ],
-              ),
-            ],
-          )),
-          const Text(
-            'Meditations',
-            style: TextStyle(
-                fontFamily: 'PT-Serif',
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: CustomColors.black),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 16),
-            child: Text(
-              '10 HOURS THIS MONTH',
+    return SingleChildScrollView(
+      child: Container(
+        color: CustomColors.whiteLilac,
+        child: Column(
+          children: [
+            SafeArea(
+                child: Column(
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    BreIcon(path: CustomIcons.stars),
+                    Container(
+                      margin: const EdgeInsets.only(top: 80, bottom: 22),
+                      alignment: Alignment.center,
+                      child: BreIcon(path: CustomIcons.flower),
+                    )
+                  ],
+                ),
+              ],
+            )),
+            const Text(
+              'Meditations',
               style: TextStyle(
-                  fontFamily: 'inter',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: CustomColors.lavender2),
+                  fontFamily: 'PT-Serif',
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: CustomColors.black),
             ),
-          ),
-          Expanded(
-            child: Padding(
+            const Padding(
+              padding: EdgeInsets.only(top: 16),
+              child: Text(
+                '10 HOURS THIS MONTH',
+                style: TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: CustomColors.lavender2),
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.only(top: 23),
-              child: ListView(
-                itemExtent: 129,
+              child: Column(
                 children: [
                   ...steps.map((BreathersShortModel breathe) => GestureDetector(
                         onTap: () {
@@ -113,9 +112,9 @@ class ListPage extends StatelessWidget {
                       ))
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
