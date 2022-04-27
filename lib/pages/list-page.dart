@@ -5,7 +5,7 @@ import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/breathe-card.dart';
 import 'package:breather/widgets/icon.dart';
 import 'package:flutter/material.dart';
-import 'package:breather/models/breathes.dart';
+import 'package:breather/models/step-short.dart';
 
 class BreatheListPage extends StatelessWidget {
   final List<BreathersShortModel> steps = BreathersShortModel.getListMock();

@@ -1,5 +1,5 @@
 import 'package:breather/constants/colors.dart';
-import 'package:breather/models/breathes.dart';
+import 'package:breather/models/step-short.dart';
 import 'package:breather/widgets/label.dart';
 import 'package:flutter/material.dart';
 

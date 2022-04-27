@@ -1,4 +1,0 @@
-#Tue Apr 26 22:57:40 MSK 2022
-base.0=/Users/alexey/dev/qwerty/breathers/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

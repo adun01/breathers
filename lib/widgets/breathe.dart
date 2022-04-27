@@ -1,81 +1,10 @@
 import 'package:breather/constants/colors.dart';
-import 'package:breather/dto/breathe-type.dart';
+import 'package:breather/models/practic-step.dart';
+import 'package:breather/models/practic.dart';
 import 'package:breather/widgets/circular-percent.dart';
 import 'package:breather/widgets/label-timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-class BreathePracticStep {
-  int time;
-  BreatheTypeDto type;
-
-  BreathePracticStep(this.time, this.type);
-
-  int get duration {
-    return time * 1000;
-  }
-
-  Color get color {
-    switch (type) {
-      case BreatheTypeDto.inhale:
-        return CustomColors.bananaMania;
-      case BreatheTypeDto.exhale:
-        return CustomColors.roseBud;
-      case BreatheTypeDto.hold:
-        return CustomColors.deYork;
-      default:
-        return CustomColors.bananaMania;
-    }
-  }
-
-  String get icon {
-    switch (type) {
-      case BreatheTypeDto.inhale:
-        return 'assets/icons/inhale.svg';
-      case BreatheTypeDto.exhale:
-        return 'assets/icons/exhale.svg';
-      case BreatheTypeDto.hold:
-        return 'assets/icons/hold.svg';
-      default:
-        return '';
-    }
-  }
-
-  String get title {
-    switch (type) {
-      case BreatheTypeDto.inhale:
-        return 'Inhale';
-      case BreatheTypeDto.exhale:
-        return 'Exhale';
-      case BreatheTypeDto.hold:
-        return 'Hold';
-      default:
-        return '';
-    }
-  }
-
-  String get label {
-    return 'SECONDS';
-  }
-}
-
-class BreathePracticList {
-  BreathePracticStep pauseStep = BreathePracticStep(0, BreatheTypeDto.hold);
-  final List<BreathePracticStep> steps = [
-    BreathePracticStep(7, BreatheTypeDto.inhale),
-    BreathePracticStep(3, BreatheTypeDto.hold),
-    BreathePracticStep(7, BreatheTypeDto.exhale),
-    BreathePracticStep(3, BreatheTypeDto.hold),
-  ];
-
-  int get totalDuration {
-    var duration = 0;
-    steps.forEach((element) {
-      duration += element.duration;
-    });
-    return duration;
-  }
-}
 
 const titleStyles = const TextStyle(
     color: CustomColors.balticSea,
@@ -92,13 +21,13 @@ class BreathePractic extends StatefulWidget {
 }
 
 class _BreathePracticState extends State {
-  final BreathePracticList practic = BreathePracticList();
+  final BreathePracticModel practic = BreathePracticModel();
 
   var activeStepIndex = 0;
   var activeCircleIndex = 0;
   var play = false;
 
-  BreathePracticStep get activeStep {
+  BreathePracticStepModel get activeStep {
     return practic.steps[activeStepIndex];
   }
 
@@ -138,7 +67,7 @@ class _BreathePracticState extends State {
         .asMap()
         .entries
         .map((entry) {
-      BreathePracticStep step = entry.value;
+      BreathePracticStepModel step = entry.value;
       final double percent = step.duration / practic.totalDuration;
       final double startAngle = passedPercent * 360;
       passedPercent += percent;
