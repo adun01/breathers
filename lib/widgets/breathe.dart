@@ -1,7 +1,7 @@
 import 'package:breather/constants/colors.dart';
 import 'package:breather/dto/breathe-type.dart';
 import 'package:breather/widgets/circular-percent.dart';
-import 'package:breather/widgets/label.dart';
+import 'package:breather/widgets/label-timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -55,7 +55,7 @@ class BreathePracticStep {
   }
 
   String get label {
-    return '${time} SECONDS';
+    return 'SECONDS';
   }
 }
 
@@ -85,8 +85,7 @@ const titleStyles = const TextStyle(
     fontWeight: FontWeight.w700);
 
 class BreathePractic extends StatefulWidget {
-
-  BreathePractic(Key? key): super(key: key);
+  BreathePractic(Key? key) : super(key: key);
 
   @override
   _BreathePracticState createState() => _BreathePracticState();
@@ -181,9 +180,11 @@ class _BreathePracticState extends State {
         ),
         Padding(
             padding: const EdgeInsets.only(bottom: 40),
-            child: BreatheLabel(
-              label: label,
-            )),
+            child: BreatheLabelTimer(
+                key: UniqueKey(),
+                time: activeStep.time,
+                label: label,
+                play: play)),
         Stack(
           children: [
             Container(
