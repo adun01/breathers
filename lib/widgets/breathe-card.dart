@@ -1,14 +1,19 @@
 import 'package:breather/constants/colors.dart';
-import 'package:breather/models/step-short.dart';
+import 'package:breather/models/practic.dart';
+
 import 'package:breather/widgets/label.dart';
 import 'package:flutter/material.dart';
 
 class BreatheCard extends StatelessWidget {
-  BreathersShortModel breathe;
+  BreathePracticModel breathe;
   VoidCallback onTap;
 
   BreatheCard({Key? key, required this.breathe, required this.onTap})
       : super(key: key);
+
+  String get label {
+    return '${breathe.circles} CIRCLES';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +42,14 @@ class BreatheCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BreatheLabel(
-              label: '12 CIRCLES',
+              label: label,
               fontSize: 10,
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(top: 15),
               child: Text(
-                'Relax breathing',
+                breathe.name,
                 style: TextStyle(
                     fontFamily: 'PT-Serif',
                     fontSize: 20,

@@ -1,4 +1,5 @@
 import 'package:breather/constants/colors.dart';
+import 'package:breather/models/practic-mock.dart';
 import 'package:breather/models/practic-step.dart';
 import 'package:breather/models/practic.dart';
 import 'package:breather/widgets/circular-percent.dart';
@@ -14,14 +15,17 @@ const titleStyles = const TextStyle(
     fontWeight: FontWeight.w700);
 
 class BreathePractic extends StatefulWidget {
-  BreathePractic(Key? key) : super(key: key);
+  final BreathePracticModel practic;
+  BreathePractic({Key? key, required this.practic}) : super(key: key);
 
   @override
-  _BreathePracticState createState() => _BreathePracticState();
+  _BreathePracticState createState() => _BreathePracticState(practic);
 }
 
 class _BreathePracticState extends State {
-  final BreathePracticModel practic = BreathePracticModel();
+  final BreathePracticModel practic;
+
+  _BreathePracticState(this.practic);
 
   var activeStepIndex = 0;
   var activeCircleIndex = 0;
@@ -141,10 +145,11 @@ class _BreathePracticState extends State {
                   return FadeTransition(opacity: animation, child: child);
                 },
                 child: Container(
-                  key: ValueKey<String>(
-                      play ? activeStep.icon : practic.pauseStep.icon),
+                  key: ValueKey<String>(play
+                      ? activeStep.icon
+                      : BreathePracticModel.pauseStep.icon),
                   child: SvgPicture.asset(
-                    play ? activeStep.icon : practic.pauseStep.icon,
+                    play ? activeStep.icon : BreathePracticModel.pauseStep.icon,
                   ),
                 ),
               ),

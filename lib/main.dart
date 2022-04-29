@@ -1,10 +1,18 @@
 import 'package:breather/constants/colors.dart';
+import 'package:breather/db/init.dart';
+import 'package:breather/db/practic-step.dart';
+import 'package:breather/db/practics.dart';
+import 'package:breather/db/step-type.dart';
 import 'package:breather/routes/routes.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+void main() async {
+  BreatheStepTypeAdapter.registerAdapter();
+  BreatheDBPracticStep.registerAdapter();
   WidgetsFlutterBinding.ensureInitialized();
+  await BreatheDB.init();
+  await BreatheDBPractics.openBox();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(MyApp()));
 }

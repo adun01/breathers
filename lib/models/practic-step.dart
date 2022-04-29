@@ -1,9 +1,16 @@
 import 'package:breather/constants/breathe-type.dart';
 import 'package:breather/constants/colors.dart';
+import 'package:breather/models/hive-type-id.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
+part 'practic-step.g.dart';
+
+@HiveType(typeId: HiveTypeId.step)
 class BreathePracticStepModel {
+  @HiveField(0)
   int time;
+  @HiveField(1)
   BreatheType type;
 
   BreathePracticStepModel(this.time, this.type);

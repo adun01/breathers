@@ -170,6 +170,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/ffi-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "file",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/file-6.1.2",
       "packageUri": "lib/",
@@ -220,6 +226,24 @@
     {
       "name": "graphs",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/graphs-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/hive-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive_flutter",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/hive_flutter-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive_generator",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/hive_generator-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -320,6 +344,48 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "path_provider_android",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.13",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "path_provider_ios",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider_macos",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "percent_indicator",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/percent_indicator-4.0.0",
       "packageUri": "lib/",
@@ -338,10 +404,28 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "platform",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "pool",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/pool-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "process",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "pub_semver",
@@ -376,6 +460,12 @@
     {
       "name": "source_gen",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/source_gen-1.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "source_helper",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/source_helper-1.3.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -464,6 +554,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/win32-2.5.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "xml",
       "rootUri": "file:///Users/alexey/.pub-cache/hosted/pub.dartlang.org/xml-5.3.1",
       "packageUri": "lib/",
@@ -482,7 +584,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-04-27T21:41:34.726656Z",
+  "generated": "2022-04-29T17:32:42.562717Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }

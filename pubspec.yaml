@@ -36,6 +36,8 @@ dependencies:
   flutter_svg: ^1.0.3
   percent_indicator: ^4.0.0
   auto_route: ^3.2.4
+  hive: ^2.1.0
+  hive_flutter: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,6 +47,7 @@ dev_dependencies:
       url: https://github.com/Davenchy/flutter_launcher_icons.git
       ref: fixMinSdkParseFlutter2.8
   auto_route_generator: ^3.2.3
+  hive_generator: ^1.1.2
   build_runner: ^2.1.10
 flutter_icons:
   android: "launcher_icon"
