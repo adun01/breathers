@@ -3,6 +3,7 @@ import 'package:breather/models/practic.dart';
 
 import 'package:breather/widgets/label.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BreatheCard extends StatelessWidget {
   BreathePracticModel breathe;
@@ -11,8 +12,8 @@ class BreatheCard extends StatelessWidget {
   BreatheCard({Key? key, required this.breathe, required this.onTap})
       : super(key: key);
 
-  String get label {
-    return '${breathe.circles} CIRCLES';
+  String label(BuildContext context) {
+    return '${breathe.circles} ${AppLocalizations.of(context)?.circles}';
   }
 
   @override
@@ -42,7 +43,7 @@ class BreatheCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BreatheLabel(
-              label: label,
+              label: label(context),
               fontSize: 10,
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             ),

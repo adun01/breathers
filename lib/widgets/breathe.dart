@@ -1,4 +1,5 @@
 import 'package:breather/constants/colors.dart';
+import 'package:breather/locale_provider.dart';
 import 'package:breather/models/practic-mock.dart';
 import 'package:breather/models/practic-step.dart';
 import 'package:breather/models/practic.dart';
@@ -6,6 +7,8 @@ import 'package:breather/widgets/circular-percent.dart';
 import 'package:breather/widgets/label-timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const titleStyles = const TextStyle(
     color: CustomColors.balticSea,
@@ -86,38 +89,46 @@ class _BreathePracticState extends State {
     }).toList();
   }
 
-  String get title {
+  String title(BuildContext context) {
     if (!play) {
-      return 'Be ready';
+      return AppLocalizations.of(context)!.press_start;
     }
-    return practic.steps[activeStepIndex].title;
+    return practic.steps[activeStepIndex].title(context);
   }
 
-  String get label {
+  String label(BuildContext context) {
     if (!play) {
-      return 'PRESS START';
+      return AppLocalizations.of(context)!.be_ready;
     }
-    return practic.steps[activeStepIndex].label;
+    return practic.steps[activeStepIndex].label(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 32, bottom: 10),
-          child: Text(
-            title,
-            style: titleStyles,
-          ),
-        ),
-        Padding(
-            padding: const EdgeInsets.only(bottom: 40),
-            child: BreatheLabelTimer(
-                key: UniqueKey(),
-                time: activeStep.time,
-                label: label,
-                play: play)),
+        ChangeNotifierProvider<LocaleProvider>(
+            create: (_) => LocaleProvider(),
+            builder: (context, child) {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 32, bottom: 10),
+                    child: Text(
+                      title(context),
+                      style: titleStyles,
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(bottom: 40),
+                      child: BreatheLabelTimer(
+                          key: UniqueKey(),
+                          time: activeStep.time,
+                          label: label(context),
+                          play: play)),
+                ],
+              );
+            }),
         Stack(
           children: [
             Container(
@@ -153,9 +164,6 @@ class _BreathePracticState extends State {
                   ),
                 ),
               ),
-              // child: SvgPicture.asset(
-              //   play ? activeStep.icon : practic.pauseStep.icon,
-              // ),
             ),
             ...getCirlces(),
           ],

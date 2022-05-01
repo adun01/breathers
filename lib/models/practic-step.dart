@@ -3,6 +3,7 @@ import 'package:breather/constants/colors.dart';
 import 'package:breather/models/hive-type-id.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'practic-step.g.dart';
 
@@ -45,20 +46,20 @@ class BreathePracticStepModel {
     }
   }
 
-  String get title {
+  String title(BuildContext context) {
     switch (type) {
       case BreatheType.inhale:
-        return 'Inhale';
+        return AppLocalizations.of(context)!.inhale;;
       case BreatheType.exhale:
-        return 'Exhale';
+        return AppLocalizations.of(context)!.exhale;;
       case BreatheType.hold:
-        return 'Hold';
+        return AppLocalizations.of(context)!.hold;;
       default:
         return '';
     }
   }
 
-  String get label {
-    return 'SECONDS';
+  String label(BuildContext context) {
+    return AppLocalizations.of(context)!.seconds;
   }
 }
