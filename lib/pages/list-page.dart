@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:breather/constants/colors.dart';
 import 'package:breather/constants/icons.dart';
 import 'package:breather/models/hive_names.dart';
-import 'package:breather/models/practic-step.dart';
 import 'package:breather/models/practic.dart';
 import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/breathe-card.dart';
@@ -11,11 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:breather/models/step-short.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:breather/l10n/all_locales.dart';
 import 'package:breather/locale_provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BreatheListPage extends StatefulWidget {
   @override

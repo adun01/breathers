@@ -33,4 +33,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get circles => 'КРУГОВ';
+
+  @override
+  String get settings => 'Настройки';
+
+  @override
+  String get home => 'Главная';
+
+  @override
+  String get profile => 'Профайл';
 }

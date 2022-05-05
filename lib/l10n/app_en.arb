@@ -7,5 +7,8 @@
   "seconds": "SECONDS",
   "be_ready": "Be ready",
   "press_start" : "PRESS START",
-  "circles": "CIRCLES"
+  "circles": "CIRCLES",
+  "settings": "Settings",
+  "home": "Home",
+  "profile": "Profile"
 }

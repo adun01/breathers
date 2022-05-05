@@ -1,6 +1,5 @@
 import 'package:breather/constants/colors.dart';
 import 'package:breather/locale_provider.dart';
-import 'package:breather/models/practic-mock.dart';
 import 'package:breather/models/practic-step.dart';
 import 'package:breather/models/practic.dart';
 import 'package:breather/widgets/circular-percent.dart';

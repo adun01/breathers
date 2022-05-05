@@ -4,6 +4,7 @@ import 'package:breather/constants/icons.dart';
 import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Color getColor(bool isActive) {
   return isActive ? CustomColors.amethyst : CustomColors.lavender;
@@ -28,18 +29,33 @@ class BreatheBottomNavigationBar extends StatefulWidget {
 
 class NavigationItem {
   String icon;
-  String label;
+  Function getLabel;
   PageRouteInfo? route;
-  NavigationItem({required this.icon, required this.label, this.route});
+  NavigationItem({required this.icon, required this.getLabel, this.route});
 }
 
 class _BreatheBottomNavigationBar extends State {
   int selectedIndex = 0;
   List<NavigationItem> items = [
     NavigationItem(
-        icon: CustomIcons.home, label: 'Home', route: ListPageRouter()),
-    NavigationItem(icon: CustomIcons.profile, label: 'Profile'),
-    NavigationItem(icon: CustomIcons.settings, label: 'Settings'),
+        icon: CustomIcons.home,
+        getLabel: (BuildContext context) {
+          return AppLocalizations.of(context)?.home;
+        },
+        route: ListPageRouter()
+    ),
+    NavigationItem(
+        icon: CustomIcons.profile,
+        getLabel: (BuildContext context) {
+          return AppLocalizations.of(context)?.profile;
+        },
+    ),
+    NavigationItem(
+        icon: CustomIcons.settings,
+        getLabel: (BuildContext context) {
+          return AppLocalizations.of(context)?.settings;
+        }
+    ),
   ];
   void setSelectedIndex(int index) {
     setState(() {
@@ -74,7 +90,8 @@ class _BreatheBottomNavigationBar extends State {
                             BreatheIcon(
                                 path: item.value.icon,
                                 color: getColor(selectedIndex == item.key)),
-                            Text(item.value.label,
+                            Text(
+                                item.value.getLabel(context),
                                 style: getTextStyle(selectedIndex == item.key))
                           ],
                         ),
