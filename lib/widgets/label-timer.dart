@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class BreatheLabelTimer extends StatefulWidget {
   bool play;
   int time;
-  int progressTime = 0;
   String label;
   double? fontSize;
   EdgeInsets? padding;

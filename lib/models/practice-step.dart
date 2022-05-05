@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-part 'practic-step.g.dart';
+part 'practice-step.g.dart';
 
 @HiveType(typeId: HiveTypeId.step)
-class BreathePracticStepModel {
+class BreathePracticeStepModel {
   @HiveField(0)
   int time;
   @HiveField(1)
   BreatheType type;
 
-  BreathePracticStepModel(this.time, this.type);
+  BreathePracticeStepModel(this.time, this.type);
 
   int get duration {
     return time * 1000;

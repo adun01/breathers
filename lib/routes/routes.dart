@@ -12,7 +12,7 @@ import 'package:breather/pages/main-page.dart';
           path: 'BrPageRouter',
           children: [
             AutoRoute(
-                page: BreathePracticPage,
+                page: BreathePracticePage,
                 name: 'BreathePracticPageRouter',
                 path: 'BreathePracticPageRouter/:id',
                 initial: true),

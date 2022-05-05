@@ -1,12 +1,12 @@
 import 'package:breather/constants/colors.dart';
-import 'package:breather/models/practic.dart';
+import 'package:breather/models/practice.dart';
 
 import 'package:breather/widgets/label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BreatheCard extends StatelessWidget {
-  BreathePracticModel breathe;
+  BreathePracticeModel breathe;
   VoidCallback onTap;
 
   BreatheCard({Key? key, required this.breathe, required this.onTap})

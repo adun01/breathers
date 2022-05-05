@@ -42,7 +42,7 @@ class AppRouter extends _i2.RootStackRouter {
               BreathePracticPageRouterArgs(id: pathParams.getInt('id')));
       return _i2.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i4.BreathePracticPage(key: args.key, id: args.id));
+          child: _i4.BreathePracticePage(key: args.key, id: args.id));
     }
   };
 
@@ -96,7 +96,7 @@ class ListPageRouter extends _i2.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.BreathePracticPage]
+/// [_i4.BreathePracticePage]
 class BreathePracticPageRouter
     extends _i2.PageRouteInfo<BreathePracticPageRouterArgs> {
   BreathePracticPageRouter({_i5.Key? key, required int id})

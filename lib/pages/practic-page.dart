@@ -6,9 +6,9 @@ import 'package:breather/widgets/layout/header.dart';
 import 'package:flutter/material.dart';
 import 'package:breather/widgets/breathe.dart';
 
-class BreathePracticPage extends StatelessWidget {
+class BreathePracticePage extends StatelessWidget {
   final int id;
-  BreathePracticPage({Key? key, @pathParam required this.id});
+  BreathePracticePage({Key? key, @pathParam required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class BreathePracticPage extends StatelessWidget {
           Expanded(
               child: ListView(
             children: [
-              BreathePractic(
+              BreathePractice(
                 key: UniqueKey(),
-                practic: BreatheDBPractics.getById(args.id)!,
+                practice: BreatheDBPractics.getById(args.id)!,
               )
             ],
           ))

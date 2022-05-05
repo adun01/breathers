@@ -1,18 +1,18 @@
 import 'package:breather/constants/breathe-type.dart';
-import 'package:breather/models/practic-step.dart';
-import 'package:breather/models/practic.dart';
+import 'package:breather/models/practice-step.dart';
+import 'package:breather/models/practice.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class BreatheDBPractics {
-  static late Box<BreathePracticModel> _openedBox;
+  static late Box<BreathePracticeModel> _openedBox;
 
-  static BreathePracticModel? getById(int id) {
+  static BreathePracticeModel? getById(int id) {
     return _openedBox.get(id);
   }
 
-  static Future<Box<BreathePracticModel>> openBox() async {
-    Hive.registerAdapter<BreathePracticModel>(BreathePracticModelAdapter());
-    _openedBox = await Hive.openBox<BreathePracticModel>('practics');
+  static Future<Box<BreathePracticeModel>> openBox() async {
+    Hive.registerAdapter<BreathePracticeModel>(BreathePracticeModelAdapter());
+    _openedBox = await Hive.openBox<BreathePracticeModel>('practics');
 
     if (_openedBox.isEmpty) {
       initDefaultValues();
@@ -23,52 +23,52 @@ class BreatheDBPractics {
 
   static void initDefaultValues() {
     _openedBox.addAll([
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Clear mind breathing',
           steps: [
-            BreathePracticStepModel(3, BreatheType.inhale),
-            BreathePracticStepModel(8, BreatheType.exhale),
+            BreathePracticeStepModel(3, BreatheType.inhale),
+            BreathePracticeStepModel(8, BreatheType.exhale),
           ],
           circles: 12),
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Relax breathing',
           steps: [
-            BreathePracticStepModel(3, BreatheType.inhale),
-            BreathePracticStepModel(6, BreatheType.exhale),
-            BreathePracticStepModel(6, BreatheType.hold),
+            BreathePracticeStepModel(3, BreatheType.inhale),
+            BreathePracticeStepModel(6, BreatheType.exhale),
+            BreathePracticeStepModel(6, BreatheType.hold),
           ],
           circles: 10),
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Calming breathing',
           steps: [
-            BreathePracticStepModel(3, BreatheType.inhale),
-            BreathePracticStepModel(6, BreatheType.hold),
-            BreathePracticStepModel(3, BreatheType.exhale),
-            BreathePracticStepModel(6, BreatheType.hold),
+            BreathePracticeStepModel(3, BreatheType.inhale),
+            BreathePracticeStepModel(6, BreatheType.hold),
+            BreathePracticeStepModel(3, BreatheType.exhale),
+            BreathePracticeStepModel(6, BreatheType.hold),
           ],
           circles: 17),
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Power breathing',
           steps: [
-            BreathePracticStepModel(3, BreatheType.inhale),
-            BreathePracticStepModel(6, BreatheType.hold),
-            BreathePracticStepModel(6, BreatheType.exhale),
+            BreathePracticeStepModel(3, BreatheType.inhale),
+            BreathePracticeStepModel(6, BreatheType.hold),
+            BreathePracticeStepModel(6, BreatheType.exhale),
           ],
           circles: 17),
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Harmony breathing',
           steps: [
-            BreathePracticStepModel(3, BreatheType.inhale),
-            BreathePracticStepModel(9, BreatheType.hold),
-            BreathePracticStepModel(6, BreatheType.exhale),
-            BreathePracticStepModel(3, BreatheType.hold),
+            BreathePracticeStepModel(3, BreatheType.inhale),
+            BreathePracticeStepModel(9, BreatheType.hold),
+            BreathePracticeStepModel(6, BreatheType.exhale),
+            BreathePracticeStepModel(3, BreatheType.hold),
           ],
           circles: 17),
-      BreathePracticModel(
+      BreathePracticeModel(
           name: 'Anti stress breathing',
           steps: [
-            BreathePracticStepModel(9, BreatheType.inhale),
-            BreathePracticStepModel(2, BreatheType.exhale),
+            BreathePracticeStepModel(9, BreatheType.inhale),
+            BreathePracticeStepModel(2, BreatheType.exhale),
           ],
           circles: 17)
     ]);

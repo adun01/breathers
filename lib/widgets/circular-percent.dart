@@ -2,20 +2,26 @@ import 'package:breather/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class BreatheCirculatPercend extends StatelessWidget {
+class BreatheCirculatPercent extends StatelessWidget {
   int animationDuration;
+  double radius;
+  double lineWidth;
   double percent;
   double startAngle;
+  bool animateFromLastPercent;
 
   Color? progressColor;
   VoidCallback? onAnimationEnd;
 
-  BreatheCirculatPercend(
+  BreatheCirculatPercent(
       {Key? key,
       required this.animationDuration,
       required this.percent,
       required this.startAngle,
+      this.radius = 144,
+      this.lineWidth = 32,
       this.progressColor,
+      this.animateFromLastPercent = false,
       this.onAnimationEnd})
       : super(key: key);
 
@@ -31,8 +37,9 @@ class BreatheCirculatPercend extends StatelessWidget {
       },
       startAngle: startAngle,
       backgroundColor: CustomColors.transparent,
-      radius: 144,
-      lineWidth: 32,
+      radius: radius,
+      lineWidth: lineWidth,
+      animateFromLastPercent: animateFromLastPercent,
       animation: true,
       circularStrokeCap: CircularStrokeCap.round,
     );

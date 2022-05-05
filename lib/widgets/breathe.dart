@@ -1,13 +1,15 @@
 import 'package:breather/constants/colors.dart';
 import 'package:breather/locale_provider.dart';
-import 'package:breather/models/practic-step.dart';
-import 'package:breather/models/practic.dart';
+import 'package:breather/models/practice-step.dart';
+import 'package:breather/models/practice.dart';
 import 'package:breather/widgets/circular-percent.dart';
 import 'package:breather/widgets/label-timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../models/practice.dart';
 
 const titleStyles = const TextStyle(
     color: CustomColors.balticSea,
@@ -16,33 +18,49 @@ const titleStyles = const TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700);
 
-class BreathePractic extends StatefulWidget {
-  final BreathePracticModel practic;
-  BreathePractic({Key? key, required this.practic}) : super(key: key);
+class BreathePractice extends StatefulWidget {
+  final BreathePracticeModel practice;
+  BreathePractice({Key? key, required this.practice}) : super(key: key);
 
   @override
-  _BreathePracticState createState() => _BreathePracticState(practic);
+  _BreathePracticeState createState() => _BreathePracticeState(practice);
 }
 
-class _BreathePracticState extends State {
-  final BreathePracticModel practic;
+class _BreathePracticeState extends State {
+  final BreathePracticeModel practice;
 
-  _BreathePracticState(this.practic);
+  _BreathePracticeState(this.practice);
 
   var activeStepIndex = 0;
   var activeCircleIndex = 0;
+  var totalTime = 0;
   var play = false;
 
-  BreathePracticStepModel get activeStep {
-    return practic.steps[activeStepIndex];
+  BreathePracticeStepModel get activeStep {
+    return practice.steps[activeStepIndex];
+  }
+
+  @override
+  void initState() {
+    int oneCircleTime = 0;
+    for (var i = 0; i < practice.steps.length; i++) {
+      oneCircleTime+= practice.steps[i].time;
+    }
+    totalTime = oneCircleTime * practice.circles;
+    super.initState();
+  }
+
+  void resetProgress() {
+    setState(() {
+      play = false;
+      activeStepIndex = 0;
+      activeCircleIndex = 0;
+    });
   }
 
   void togglePlay() {
     if (play) {
-      setState(() {
-        play = false;
-        activeStepIndex = 0;
-      });
+      resetProgress();
     } else {
       setState(() {
         play = true;
@@ -50,8 +68,20 @@ class _BreathePracticState extends State {
     }
   }
 
+  int get totalSteps {
+    return practice.steps.length * practice.circles;
+  }
+
   void nextStep() {
-    if (activeStepIndex < practic.steps.length - 1) {
+    if (!play) {
+      return;
+    }
+    if (
+      activeCircleIndex + 1 == practice.circles &&
+      activeStepIndex + 1 == practice.steps.length
+    ) {
+      resetProgress();
+    } else if (activeStepIndex < practice.steps.length - 1) {
       setState(() {
         activeStepIndex++;
       });
@@ -63,25 +93,25 @@ class _BreathePracticState extends State {
     }
   }
 
-  List<Widget> getCirlces() {
+  List<Widget> getCircles() {
     var passedPercent = 0.0;
     if (!play) {
       return [];
     }
-    return practic.steps
+    return practice.steps
         .sublist(0, activeStepIndex + 1)
         .asMap()
         .entries
         .map((entry) {
-      BreathePracticStepModel step = entry.value;
-      final double percent = step.duration / practic.totalDuration;
+      BreathePracticeStepModel step = entry.value;
+      final double percent = step.duration / practice.totalDuration;
       final double startAngle = passedPercent * 360;
       passedPercent += percent;
-      return BreatheCirculatPercend(
+      return BreatheCirculatPercent(
         key: ValueKey('${entry.key} circle key ${activeCircleIndex}'),
         progressColor: step.color,
         animationDuration: step.duration,
-        percent: step.duration / practic.totalDuration,
+        percent: step.duration / practice.totalDuration,
         onAnimationEnd: nextStep,
         startAngle: startAngle,
       );
@@ -92,14 +122,14 @@ class _BreathePracticState extends State {
     if (!play) {
       return AppLocalizations.of(context)!.press_start;
     }
-    return practic.steps[activeStepIndex].title(context);
+    return practice.steps[activeStepIndex].title(context);
   }
 
   String label(BuildContext context) {
     if (!play) {
       return AppLocalizations.of(context)!.be_ready;
     }
-    return practic.steps[activeStepIndex].label(context);
+    return practice.steps[activeStepIndex].label(context);
   }
 
   @override
@@ -157,14 +187,26 @@ class _BreathePracticState extends State {
                 child: Container(
                   key: ValueKey<String>(play
                       ? activeStep.icon
-                      : BreathePracticModel.pauseStep.icon),
+                      : BreathePracticeModel.pauseStep.icon),
                   child: SvgPicture.asset(
-                    play ? activeStep.icon : BreathePracticModel.pauseStep.icon,
+                    play ? activeStep.icon : BreathePracticeModel.pauseStep.icon,
                   ),
                 ),
               ),
             ),
-            ...getCirlces(),
+            ...getCircles(),
+            Padding(
+              padding: EdgeInsets.only(top: 33, left: 32),
+              child: BreatheCirculatPercent(
+                progressColor: CustomColors.lavender,
+                animationDuration: totalTime * 1000,
+                percent: play ? 1 : 0,
+                radius: 112,
+                lineWidth: 3,
+                startAngle: 0,
+                onAnimationEnd: () {},
+              ),
+            )
           ],
         ),
         Padding(

@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:breather/constants/colors.dart';
 import 'package:breather/constants/icons.dart';
 import 'package:breather/models/hive_names.dart';
-import 'package:breather/models/practic.dart';
+import 'package:breather/models/practice.dart';
 import 'package:breather/routes/routes.gr.dart';
 import 'package:breather/widgets/breathe-card.dart';
 import 'package:breather/widgets/icon.dart';
@@ -68,15 +68,15 @@ class _BreatheListPage extends State {
                   ),
                   ValueListenableBuilder(
                       valueListenable:
-                          Hive.box<BreathePracticModel>(HiveBoxes.practics)
+                          Hive.box<BreathePracticeModel>(HiveBoxes.practics)
                               .listenable(),
-                      builder: (context, Box<BreathePracticModel> box, _) {
+                      builder: (context, Box<BreathePracticeModel> box, _) {
                         return Padding(
                           padding: EdgeInsets.only(top: 23),
                           child: Column(
                             children: [
                               ...box.values.map(
-                                  (BreathePracticModel breathe) => BreatheCard(
+                                  (BreathePracticeModel breathe) => BreatheCard(
                                       breathe: breathe,
                                       onTap: () {
                                         AutoRouter.of(context)

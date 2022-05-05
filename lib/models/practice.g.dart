@@ -1,36 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'practic-step.dart';
+part of 'practice.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class BreathePracticStepModelAdapter
-    extends TypeAdapter<BreathePracticStepModel> {
+class BreathePracticeModelAdapter extends TypeAdapter<BreathePracticeModel> {
   @override
-  final int typeId = 2;
+  final int typeId = 1;
 
   @override
-  BreathePracticStepModel read(BinaryReader reader) {
+  BreathePracticeModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return BreathePracticStepModel(
-      fields[0] as int,
-      fields[1] as BreatheType,
+    return BreathePracticeModel(
+      name: fields[2] as String,
+      steps: (fields[1] as List).cast<BreathePracticeStepModel>(),
+      circles: fields[3] as int,
+      id: fields[0] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, BreathePracticStepModel obj) {
+  void write(BinaryWriter writer, BreathePracticeModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.time)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.type);
+      ..write(obj.steps)
+      ..writeByte(2)
+      ..write(obj.name)
+      ..writeByte(3)
+      ..write(obj.circles);
   }
 
   @override
@@ -39,7 +44,7 @@ class BreathePracticStepModelAdapter
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BreathePracticStepModelAdapter &&
+      other is BreathePracticeModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
