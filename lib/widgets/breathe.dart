@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:breather/constants/colors.dart';
 import 'package:breather/locale_provider.dart';
 import 'package:breather/models/practice-step.dart';
@@ -6,6 +8,7 @@ import 'package:breather/widgets/circular-percent.dart';
 import 'package:breather/widgets/label-timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -26,9 +29,12 @@ class BreathePractice extends StatefulWidget {
   _BreathePracticeState createState() => _BreathePracticeState(practice);
 }
 
-class _BreathePracticeState extends State {
+class _BreathePracticeState extends State with TickerProviderStateMixin {
   final BreathePracticeModel practice;
-
+  final player = AudioPlayer();
+  late Directory tempDir;
+  AnimationController? _animationController;
+  Animation? _animation;
   _BreathePracticeState(this.practice);
 
   var activeStepIndex = 0;
@@ -42,6 +48,7 @@ class _BreathePracticeState extends State {
 
   @override
   void initState() {
+    getTemporaryDirectory().then((value) => tempDir = value);
     int oneCircleTime = 0;
     for (var i = 0; i < practice.steps.length; i++) {
       oneCircleTime+= practice.steps[i].time;
@@ -58,9 +65,33 @@ class _BreathePracticeState extends State {
     });
   }
 
+  void playSound(BreathePracticeStepModel step) async {
+    final path = '${tempDir.path}/sounds/project1.mp3';
+    player.play(path, isLocal: true, volume: 0);
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: (step.duration / 2).toInt()),
+    );
+    _animation = Tween(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController!, curve: Curves.linear),
+    )..addListener(() {
+      player.setVolume(_animation!.value);
+      if (_animation!.isCompleted && _animation!.value != 0) {
+        _animationController!.reverse();
+      }
+    });
+    _animationController!.forward();
+  }
+
+  void stopSound() {
+    player.stop();
+    _animationController!.stop();
+  }
+
   void togglePlay() {
     if (play) {
       resetProgress();
+      stopSound();
     } else {
       setState(() {
         play = true;
@@ -73,6 +104,7 @@ class _BreathePracticeState extends State {
   }
 
   void nextStep() {
+    stopSound();
     if (!play) {
       return;
     }
@@ -107,6 +139,9 @@ class _BreathePracticeState extends State {
       final double percent = step.duration / practice.totalDuration;
       final double startAngle = passedPercent * 360;
       passedPercent += percent;
+      if (entry.key == activeStepIndex) {
+        playSound(step);
+      }
       return BreatheCirculatPercent(
         key: ValueKey('${entry.key} circle key ${activeCircleIndex}'),
         progressColor: step.color,

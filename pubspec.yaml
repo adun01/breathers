@@ -42,6 +42,8 @@ dependencies:
   hive: ^2.1.0
   hive_flutter: ^1.1.0
   wakelock: ^0.6.1+2
+  audioplayers: ^0.20.1
+  path_provider: ^2.0.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -88,6 +90,8 @@ flutter:
     - assets/icons/stars.svg
     - assets/123.jpg
     - assets/main-screen.jpg
+    - assets/sounds/e44a3ce7e80e2af.mp3
+    - assets/sounds/project1.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -26,6 +26,12 @@
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/windows/flutter/ephemeral/.plugin_symlinks/path_provider_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/.symlinks/plugins/audioplayers/example/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
